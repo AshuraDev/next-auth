@@ -4,6 +4,7 @@ import * as z from "zod";
 import { RegisterSchema } from "@/schema";
 import bcrypt from "bcrypt";
 import { db } from "@/lib/db";
+import { getUserByEmail } from "@/data/user";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
@@ -18,8 +19,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   //Verify if user already exist in database
-  const existingUser = await db.user.findUnique({ where: { email } });
-
+  const existingUser = await getUserByEmail(email);
   //Send error message if user alredy exist
   if (existingUser) return { error: "Email already in use!" };
 
