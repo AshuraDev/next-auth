@@ -18,7 +18,6 @@ export const getVerificationTokenByToken = async (token: string) => {
     const verificationToken = await db.verificationToken.findFirst({
       where: { token },
     });
-
     return verificationToken;
   } catch {
     return null;
