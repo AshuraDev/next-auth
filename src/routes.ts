@@ -9,7 +9,7 @@ export const publicRoutes = ["/", "/auth/new-verification"];
  * Routes that are used for authentication
  *
  */
-export const authRoutes = ["/auth/login", "/auth/register", "/auth/error"];
+export const authRoutes = ["/auth/login", "/auth/register", "/auth/error", "/auth/reset","/auth/new-password"];
 /**
  *
  *

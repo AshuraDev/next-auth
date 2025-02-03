@@ -7,6 +7,15 @@ export const LoginSchema = z.object({
   password: z.string().min(1, { message: "Password is required" }),
 });
 
+export const ResetSchema = z.object({
+  email: z
+    .string({ invalid_type_error: "Email must be a string" })
+    .email({ message: "Invalid email" }),
+});
+export const NewPassworSchema = z.object({
+  password: z.string().min(6, { message: "Minimum 06 characters is required" }),
+});
+
 ///
 
 export const RegisterSchema = z.object({
